@@ -1,0 +1,23 @@
+#spring:
+#  profiles:
+#    active: local
+server:
+  port: 8888
+spring:
+  jpa:
+    database: mysql
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+  main:
+    allow-bean-definition-overriding: true
+  application:
+    name: finalExamService
+  datasource:
+    url: jdbc:mysql://192.168.88.138:3301/uocdb
+    username: root
+    password: root
+    driver-class-name: com.mysql.jdbc.Driver

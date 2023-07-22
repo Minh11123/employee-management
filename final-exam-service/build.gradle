@@ -1,0 +1,40 @@
+plugins {
+    id 'org.springframework.boot' version '2.6.4'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'java'
+}
+
+group = 'com.vti'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+
+    compileOnly "org.projectlombok:lombok:${lombokVersion}"
+    annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
+
+    runtimeOnly "io.jsonwebtoken:jjwt-jackson:${jsonWebTokenVersion}"
+    runtimeOnly "io.jsonwebtoken:jjwt-impl:${jsonWebTokenVersion}"
+    implementation "io.jsonwebtoken:jjwt-api:${jsonWebTokenVersion}"
+    implementation "com.alibaba:fastjson:${fastJsonVersion}"
+
+    runtimeOnly 'mysql:mysql-connector-java'
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
